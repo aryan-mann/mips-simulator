@@ -5,10 +5,10 @@
 
 | Function | Status |
 | :------: | :----: |
-|add / addi / addiu / addu |✅|
-|and / andi |❌|
-|beq / bne|❌|
-|j / jal / jr |❌|
+| nop | ✅ |
+|add / sub / addi |✅|
+|beq |✅|
+|j |✅|
 
 ----
 ##### By Aryan Mann
