@@ -8,7 +8,69 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+#App {
+    display: flex;
+    align-content: stretch;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #282c34;
+}
+
+#App .Left {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    background-color: orange;
+}
+#App .Right {
+    display: flex;
+    width: 30%;
+    background-color: cadetblue;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.toolbar {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #2f3129;
+    padding: 0.25em;
+    margin: 0;
+}
+.toolbar button {
+    background-color: #8f9079;
+    border: none;
+    min-width: 2em;
+    padding: 0.2em 0.6em;
+}
+.toolbar button:active {
+    background-color: #2f3129;
+    color: #8f9079;
+}
+
+/* REGISTER TABLE */
+.ReactTable {
+    width: 100%;
+
+    background-color: #282c34;
+    color: #d6d6d6;
+}
+.ReactTable.-striped .rt-tr.-odd {
+    background-color: #383c45 !important;
+}
+
+.centered {
+    text-align: center;
+}
+
+.ace_gutter-cell.select {
+    background-color: #fffc00;
+    color: black;
+}
+.ace_gutter-cell.select-last {
+    background: #1e51a4;
+    color: white;
 }
