@@ -3,13 +3,14 @@
 A MIPS emulator/simulator made with React!
 
 ## Function Completion
+The following functions are supported: `add addi bne j nop`.
 
-| Function | Status |
-| :------: | :----: |
-| nop | ✅ |
-|add / sub / addi |✅|
-|beq |✅|
-|j |✅|
+The following features are supported: -
+1. Stepwise assembly
+2. Syntax highlighting
+
+The following features are planned: -
+1. Autocomplete / intellisense
 
 ----
 ##### By Aryan Mann
