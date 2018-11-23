@@ -18,37 +18,14 @@ body {
     background-color: #282c34;
 }
 
-#App .Left {
+.IDE-wrapper {
     display: flex;
-    flex-direction: column;
-    width: 70%;
-    background-color: orange;
-}
-#App .Right {
-    display: flex;
-    width: 30%;
-    background-color: cadetblue;
-    flex-direction: row;
-    justify-content: center;
+    width: 100%;
 }
 
-
-.toolbar {
-    display: flex;
-    justify-content: flex-end;
-    background-color: #2f3129;
-    padding: 0.25em;
-    margin: 0;
-}
-.toolbar button {
-    background-color: #8f9079;
-    border: none;
-    min-width: 2em;
-    padding: 0.2em 0.6em;
-}
-.toolbar button:active {
-    background-color: #2f3129;
-    color: #8f9079;
+.program {
+    height: 100vh;
+    overflow-y: scroll;
 }
 
 /* REGISTER TABLE */
@@ -70,7 +47,7 @@ body {
     background-color: #fffc00;
     color: black;
 }
-.ace_gutter-cell.select-last {
+.ace_gutter-cell.halt {
     background: #1e51a4;
     color: white;
 }

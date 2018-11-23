@@ -8,7 +8,7 @@ class Toolbar extends Component {
 
         for(let i=0; i < items.length; i++){
             let item = items[i];
-            elements.push(<button key={`button-`+i} onClick={item.clicked}>{item.name}</button>);
+            elements.push(<button key={`button-`+i} onClick={item.onClick}>{item.name}</button>);
         }
 
         return (

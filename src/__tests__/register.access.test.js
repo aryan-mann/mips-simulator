@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '../App';
-import {GetRegisterNumber} from "../Constants/RegisterTools"
+import {GetRegisterNumber} from "../Code/RegisterTools"
 
 test('register name translates to index ', ()=>{
     expect(GetRegisterNumber("$zero")).toBe(0);

@@ -1,59 +1,50 @@
 import React, {Component} from "react";
-import store from "../State/Store";
 import {connect} from "react-redux";
-import {GetRegisterName} from "../Constants/RegisterTools";
 import ReactTable from "react-table";
 import 'react-table/react-table.css';
 
 const mapStateToProps = (state) => {
-
+    const registerKeys = Object.keys(state.registers);
+    const stateRegister = state.registers;
     return {
-        registers: state.registers || []
-    };
-
+        registers: registerKeys.map((key) => [key, stateRegister[key]])
+    }
 };
 
-class RegistersProxy extends Component {
-
+class Registers extends Component {
     render() {
-        let registers = this.props.registers;
-        let elements = Array.from(Array(registers.length).keys());
-
+        //console.log(this.props.registers);
         return (
             <ReactTable
-                data={elements}
+                data={this.props.registers || []}
                 columns={[
-                    {
-                        Header: "",
-                        id: "_gutter1",
-                        maxWidth: 32,
-                        accessor: i => ""
-                    },
-                    {
-                        Header: "#",
-                        id: "num",
-                        maxWidth: 32,
-                        accessor: i => i,
-                        className: "centered"
-                    },
                     {
                         Header: "Name",
                         id: "name",
                         maxWidth: 64,
-                        accessor: i => GetRegisterName(i),
+                        accessor: i => i[0],
                         className: "centered"
                     },
                     {
-                        Header: "Decimal",
+                        Header: "Value",
                         id: "dec-val",
                         maxWidth: 128,
-                        accessor: i => registers[i],
+                        accessor: i => i[1],
                         className: "centered"
                     },
                     {
-                        Header: "",
-                        id: "_gutter2",
-                        accessor: i => ""
+                        Header: "Hex Value",
+                        id: "hex-val",
+                        maxWidth: 128,
+                        accessor: i => Number(i[1]).toString(16).toUpperCase(),
+                        className: "centered"
+                    },
+                    {
+                        Header: "Binary Value",
+                        id: "binary-val",
+                        maxWidth: 128,
+                        accessor: i => i[1].toString(2),
+                        className: "centered"
                     }
                 ]}
                 defaultPageSize={32}
@@ -65,5 +56,4 @@ class RegistersProxy extends Component {
 
 }
 
-const Registers = connect(mapStateToProps)(RegistersProxy);
-export default Registers;
+export default connect(mapStateToProps)(Registers);
