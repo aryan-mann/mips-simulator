@@ -54,7 +54,9 @@ class IDE extends Component {
     assemble = () => {
         if (this.editor === null || this.editor === undefined)
             return;
+
         const lines = this.editor.session.getLines(0, this.editor.session.getLength());
+        console.log(lines);
         this.props.initProgram(Assembler.Assemble(lines));
 
         // Remove all line indicators

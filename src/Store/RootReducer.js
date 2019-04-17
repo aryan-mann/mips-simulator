@@ -50,6 +50,10 @@ const RootReducer = (state, action) => {
             let currentState = state;
             let shouldContinue = true;
 
+            if (currentProgramCounter > state.instructions.length) {
+                shouldContinue = false;
+            }
+
             while(shouldContinue) {
                 let nextState = (state.instructions[currentProgramCounter]).payload(currentState);
 

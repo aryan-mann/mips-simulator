@@ -25,7 +25,7 @@ class Operations {
         }
 
         // Replace null with a nop to get Nop when cant recognize instruction
-        if (foundIndex < 0) { return null; }
+        if (foundIndex < 0) { return Operations.GetInstruction('nop'); }
         // Calling this with the appropriate number of arguments will give us the state mutator
         const args = patternAsRegex.exec(userInput).slice(1).map((x) => x.trim());
 
@@ -64,6 +64,22 @@ Operations.New(
     }
 );
 
+// sub $s0, $s1, $s2
+Operations.New(
+    'sub _#_,_#_,_#_',
+    (rd, rs, rt) => {
+        return ((state) => {
+            return {
+                ...state,
+                registers: {
+                    ...state.registers,
+                    [rd]: parseInt(state.registers[rs] - state.registers[rt])
+                }
+            }
+        })
+    }
+);
+
 // add $s0, $s1, 100
 Operations.New(
     'addi _#_,_#_,_#_',
@@ -79,6 +95,27 @@ Operations.New(
                     [rd]: (v1 + v2)
                 }
             }
+        });
+    }
+);
+
+// li $t0, 100
+Operations.New(
+    'li _#_,_#_',
+    (rd, immediate) => {
+        return ((state) => {
+
+            immediate = parseInt(immediate);
+            immediate = isNaN(immediate) ? 0: immediate;
+
+            return {
+                ...state,
+                registers: {
+                    ...state.registers,
+                    [rd]: immediate
+                }
+            }
+
         });
     }
 );
@@ -123,5 +160,44 @@ Operations.New(
         });
     }
 );
+
+// jal loop
+Operations.New(
+    'jal _#_',
+    (label) => {
+        return ((state) => {
+            return {
+                ...state,
+                programCounter: state.jumpTable[label],
+                registers: {
+                    ...state.registers,
+                    "$ra": state.programCounter
+                }
+            }
+        })
+    }
+);
+
+// Extra Functions (that are not generally available)
+Operations.New(
+    'mod _#_, _#_, _#_',
+    (reg, a, m) => {
+        return ((state) => {
+
+            return {
+                ...state,
+                registers: {
+                    ...state.registers,
+                    [reg]: ((a + m) % m)
+                }
+            }
+
+        });
+    }
+);
+
+// Mimics
+Operations.New('addu _#_,_#_,_#_', Operations.GetInstruction('add'));
+Operations.New('subu _#_,_#_,_#_', Operations.GetInstruction('sub'));
 
 export default Operations;

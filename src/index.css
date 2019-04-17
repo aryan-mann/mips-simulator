@@ -28,6 +28,17 @@ body {
     overflow-y: scroll;
 }
 
+.toolbar {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.toolbar button {
+    margin-top: 1em;
+    font-size: 1.1em;
+}
+
 /* REGISTER TABLE */
 .ReactTable {
     width: 100%;
