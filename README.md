@@ -21,9 +21,9 @@ The following functions are supported: `add addi bne j nop`.
 | Store Word  | SW | X |
 | Store Word Right  | SWR | X |
 | Add  | ADD | ✔ |
-| Add Unsigned  | ADDU | X |
+| Add Unsigned  | ADDU | ✔ |
 | Subtract  | SUB | ✔ |
-| Subtract Unsigned  | SUBU | X |
+| Subtract Unsigned  | SUBU | ✔ |
 | And  | AND | X |
 | Or  | OR | X |
 | Exclusive Or  | XOR | X |
