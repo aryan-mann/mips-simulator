@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel": "^5.8.23",
+    "babel-core": "^5.0.0",
+    "babel-loader": "^5.3.2",
+    "mocha": "^5.2.0",
     "brace": "^0.11.1",
     "immer": "^1.7.4",
     "react": "^16.5.2",
